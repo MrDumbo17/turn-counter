@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contador de Turnos D&D</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <h1>Contador de Turno</h1>
+  </header>
+  <main>
+    <div class="turno-controle">
+      <div>
+        <label>Turno Atual</label>
+        <div id="turno">1</div>
+      </div>
+      <div>
+        <label>Jogador Atual</label>
+        <div id="jogadorAtual">-</div>
+      </div>
+      <button onclick="proximoTurno()">Próximo</button>
+      <button onclick="limparFila()">Limpar Fila</button>
+    </div>
+    <div class="adicionar-participante">
+      <label>Nome<br><input type="text" id="nome"/></label>
+      <label>Iniciativa<br><input type="number" id="iniciativa"/></label>
+      <label>CA<br><input type="number" id="ca"/></label>
+      <label>Vida Máxima<br><input type="number" id="vidaMaxima"/></label>
+      <button onclick="adicionarParticipante()">Adicionar</button>
+    </div>
+    <table id="tabela">
+      <thead>
+        <tr>
+          <th>Iniciativa</th>
+          <th>Nome</th>
+          <th>CA</th>
+          <th>Vida</th>
+          <th>Concentração</th>
+          <th>Ações</th>
+          <th>Condições</th>
+          <th>Opções</th>
+        </tr>
+      </thead>
+      <tbody id="lista"></tbody>
+    </table>
+  </main>
+
+  <!-- Popup de Concentração -->
+
+  <div id="popup-concentracao" class="popup">
+    <div class="popup-content">
+      <h3>Concentração</h3>
+      <label>Nome da Magia<br><input type="text" id="concentracaoTexto"/></label>
+      <label>Quantidade de Turnos<br><input type="number" id="concentracaoTurnos"/></label>
+      <button onclick="confirmarConcentracao()">Confirmar</button>
+      <button onclick="fecharTodosPopups()">Cancelar</button>
+    </div>
+  </div>
+
+  <!-- Popup de Condição -->
+
+  <div id="popup-condicao" class="popup">
+    <div class="popup-content">
+      <h3>Condições</h3>
+      <label>
+        <select id="condicaoSelect">
+          <option>Atordoado</option>
+          <option>Caído</option>
+          <option>Cego</option>
+          <option>Enfeitiçado</option>
+          <option>Envenenado</option>
+          <option>Exausto</option>
+          <option>Imobilizado</option>
+          <option>Incapacitado</option>
+          <option>Invisível</option>
+          <option>Paralisado</option>
+          <option>Petrificado</option>
+          <option>Surdo</option>
+          <option>Restrito</option>
+          <option>Amedrontado</option>
+          <option>Surpreso</option>
+        </select>
+      </label>
+      <label>Turnos<br><input type="number" id="condicaoTurnos"/></label>
+      <button onclick="confirmarCondicao()">Confirmar</button>
+      <button onclick="fecharTodosPopups()">Cancelar</button>
+    </div>
+  </div>
+
+  <!-- Popup de Edição -->
+  <div id="popup-editar" class="popup">
+    <div class="popup-content">
+      <h2>Editar Jogador</h2>
+      <label>Nome:<br><input type="text" id="editarNome" /></label>
+      <label>Iniciativa: <input type="number" id="editarIniciativa" /></label>
+      <label>CA: <input type="number" id="editarCA" /></label>
+      <label>Vida Máxima: <input type="number" id="editarVidaMaxima" /></label>
+      <label>Vida Atual: <input type="number" id="editarVidaAtual" /></label>
+      <h3>Reação</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Ação</th>
+            <th>Bônus</th>
+            <th>Reação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="number" id="editarAcoes" min="1" /></td>
+            <td><input type="number" id="editarAcoesBonus" min="1" /></td>
+            <td><input type="number" id="editarReacoes" min="1" /></td>
+          </tr>
+        </tbody>
+    </table>
+      <button onclick="confirmarEdicao()">Confirmar</button>
+      <button onclick="fecharTodosPopups()">Cancelar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>  
